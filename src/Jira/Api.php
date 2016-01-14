@@ -144,6 +144,18 @@ class Api
         return $this->api(self::REQUEST_GET, sprintf("/rest/api/2/issue/%s", $issueKey), array('expand' => $expand));
     }
 
+    /**
+     * [getIssues description]
+     * @param  string $jql [description]
+     * @return \chobie\Jira\Issues\Walker      [description]
+     */
+    public function getIssues($jql)
+    {
+        $walker = new \chobie\Jira\Issues\Walker($this);
+        $walker->push($jql, "*navigable");
+        return $walker;
+    }
+
     public function editIssue($issueKey, $params)
     {
         return $this->api(self::REQUEST_PUT, sprintf("/rest/api/2/issue/%s", $issueKey), $params);
