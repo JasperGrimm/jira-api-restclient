@@ -239,6 +239,11 @@ class Api
         return $this->api(self::REQUEST_POST, sprintf("/rest/api/2/issue/%s/comment", $issueKey), $params);
     }
 
+    public function getComment($issueKey)
+    {
+        return $this->api(self::REQUEST_GET, sprintf("/rest/api/2/issue/%s/comment", $issueKey));
+    }
+
     /**
      * get available transitions for a ticket
      *
